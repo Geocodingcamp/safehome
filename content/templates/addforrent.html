@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="mobile" class="form-label">Mobile number</label>
+        <input type="number" name="mobile" id="mobile" class="form-control">
+        {% if form.errors.mobile %}
+        <b class="text-danger">{{ form.errors.mobile }}</b>
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        <label for="myhomelink" class="form-label">Myhome link</label>
+        <input type="url" name="myhomelink" id="myhomelink" class="form-control">
+        {% if form.errors.myhomelink %}
+        <b class="text-danger">{{ form.errors.myhomelink }}</b>
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        <label for="myhomeid" class="form-label">Myhome id</label>
+        <input type="number" name="myhomeid" id="myhomeid" class="form-control">
+        {% if form.errors.myhomeid %}
+        <b class="text-danger">{{ form.errors.myhomeid }}</b>
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        <label for="sslink" class="form-label">SS link</label>
+        <input type="url" name="sslink" id="sslink" class="form-control">
+        {% if form.errors.sslink %}
+        <b class="text-danger">{{ form.errors.sslink }}</b>
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        <label for="ssid" class="form-label">SS id</label>
+        <input type="number" name="ssid" id="ssid" class="form-control">
+        {% if form.errors.ssid %}
+        <b class="text-danger">{{ form.errors.ssid }}</b>
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        <label for="area" class="form-label">Area</label>
+        <input type="number" name="area" id="area" class="form-control">
+        {% if form.errors.area %}
+        <b class="text-danger">{{ form.errors.area }}</b>
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" name="price" id="price" class="form-control">
+        {% if form.errors.price %}
+        <b class="text-danger">{{ form.errors.price }}</b>
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <textarea name="address" id="address" rows="5" class="form-control"></textarea>
+        {% if form.errors.address %}
+        <b class="text-danger">{{ form.errors.address }}</b>
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        <label for="limitations" class="form-label">Limitations</label>
+        <textarea name="limitations" id="limitations" rows="10" class="form-control"></textarea>
+        {% if form.errors.limitations %}
+        <b class="text-danger">{{ form.errors.limitations }}</b>
+        {% endif %}
+    </div>
+    <div class="mb-3">
+        {% for message in messages %}
+        <b class="text-success">{{ message }}</b>
+        {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+{% endblock %}

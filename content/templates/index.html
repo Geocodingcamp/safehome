@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between tables-pages">
+    <div>
+        <a href="./">For rent</a>
+    </div>
+    <div>
+        <a href="./forsale">For sale</a>
+    </div>
+</div>
+<hr>
+<div class="table-content">
+    <table class="table table-striped-columns" border="1">
+        <thead>
+            <tr>
+                <th>Mobile number</th>
+                <th>Myhome link</th>
+                <th>Myhome id</th>
+                <th>SS link</th>
+                <th>SS id</th>
+                <th>Apartment area</th>
+                <th>Price</th>
+                <th>Address</th>
+                <th>Limitations</th>
+                <th>Agent</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for forrent in rentals %}
+            <tr>
+                <td><a href="tel:+995{{ forrent.mobile }}">{{ forrent.mobile }}</a></td>
+                <td><a href="{{ forrent.myhomelink }}" target="_blank" rel="noopener noreferrer">{{ forrent.myhomelink }}</a></td>
+                <td>{{ forrent.myhomeid }}</td>
+                <td><a href="{{ forrent.sslink }}" target="_blank" rel="noopener noreferrer">{{ forrent.sslink }}</a>
+                </td>
+                <td>{{ forrent.ssid }}</td>
+                <td>{{ forrent.area }} m<sup>2</sup></td>
+                <td>{{ forrent.price }}$</td>
+                <td>{{ forrent.address }}</td>
+                <td>{{ forrent.limitations }}</td>
+                <td>{{ forrent.agent }}</td>
+                <td>
+                    <a href="deleteforrent/{{ forrent.id }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

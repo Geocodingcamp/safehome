@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" name="username" id="username" class="form-control">
+        {% if form.errors.username %}
+        <b class="text-danger">{{ form.errors.username }}</b>
+        {% endif %}
+        {% for message in messages %}
+        <b class="text-danger">{{ message }}</b>
+        {% endfor %}
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" id="password" class="form-control">
+        {% if form.errors.password %}
+        <b class="text-danger">{{ form.errors.password }}</b>
+        {% endif %}
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+{% endblock %}
